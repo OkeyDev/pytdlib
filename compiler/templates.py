@@ -22,6 +22,12 @@ class TlObject:
                 data_dict[key] = value
 
         return data_dict
+
+    def __str__(self) -> str:
+        params = ", ".join(
+            f"{key}={getattr(self, key, None)}" for key in self.__slots__
+        )
+        return f"{self.__class__.__name__}({params})" 
 """.strip()
 
 OBJECT_CLASS_DEFINITION = """
