@@ -157,7 +157,7 @@ class ClientManager:
         for h in handlers:
             client = self.id_clients[obj._client_id]
             asyncio.run_coroutine_threadsafe(h.execute(client, obj), self.loop)
-        logger.info("%s handlers was emmited on update %s", len(handlers), obj)
+        logger.debug("%s handlers was emmited on update %s", len(handlers), obj)
 
     async def _authorize_handler(self, _, auth_state: UpdateAuthorizationState):
         if not isinstance(auth_state, AuthorizationStateWaitTdlibParameters):
