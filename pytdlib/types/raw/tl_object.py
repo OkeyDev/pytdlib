@@ -1,4 +1,5 @@
 import base64
+import json
 from typing import Any
 
 
@@ -19,7 +20,7 @@ class TlObject:
             elif isinstance(value, bytes):
                 data_dict[key] = base64.b64encode(value).decode()
             else:
-                data_dict[key] = value
+                data_dict[key] = json.dumps(value)
 
         return data_dict
 
@@ -28,4 +29,3 @@ class TlObject:
             f"{key}={getattr(self, key, None)}" for key in self.__slots__
         )
         return f"{self.__class__.__name__}({params})"
-
